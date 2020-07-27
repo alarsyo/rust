@@ -30,6 +30,7 @@ pub mod inline;
 pub mod instcombine;
 pub mod instrument_coverage;
 pub mod match_branches;
+pub mod multiple_return_terminators;
 pub mod no_landing_pads;
 pub mod nrvo;
 pub mod promote_consts;
@@ -453,6 +454,7 @@ fn run_optimization_passes<'tcx>(
 
     // The main optimizations that we do on MIR.
     let optimizations: &[&dyn MirPass<'tcx>] = &[
+        &multiple_return_terminators::MultipleReturnTerminators,
         &instcombine::InstCombine,
         &match_branches::MatchBranchSimplification,
         &const_prop::ConstProp,
