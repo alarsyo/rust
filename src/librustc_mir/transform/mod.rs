@@ -469,6 +469,7 @@ fn run_optimization_passes<'tcx>(
         &simplify::SimplifyCfg::new("final"),
         &nrvo::RenameReturnPlace,
         &simplify::SimplifyLocals,
+        &multiple_return_terminators::MultipleReturnTerminators,
     ];
 
     // Optimizations to run even if mir optimizations have been disabled.

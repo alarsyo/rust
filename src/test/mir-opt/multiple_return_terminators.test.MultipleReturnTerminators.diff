@@ -4,27 +4,25 @@
   fn test(_1: bool) -> () {
       debug x => _1;                       // in scope 0 at $DIR/multiple_return_terminators.rs:3:9: 3:10
       let mut _0: ();                      // return place in scope 0 at $DIR/multiple_return_terminators.rs:3:18: 3:18
-      let mut _2: bool;                    // in scope 0 at $DIR/multiple_return_terminators.rs:4:8: 4:9
   
       bb0: {
-          StorageLive(_2);                 // scope 0 at $DIR/multiple_return_terminators.rs:4:8: 4:9
-          _2 = _1;                         // scope 0 at $DIR/multiple_return_terminators.rs:4:8: 4:9
-          switchInt(_2) -> [false: bb1, otherwise: bb2]; // scope 0 at $DIR/multiple_return_terminators.rs:4:5: 8:6
+          switchInt(_1) -> [false: bb1, otherwise: bb2]; // scope 0 at $DIR/multiple_return_terminators.rs:4:5: 8:6
       }
   
       bb1: {
           _0 = const ();                   // scope 0 at $DIR/multiple_return_terminators.rs:6:12: 8:6
-          goto -> bb3;                     // scope 0 at $DIR/multiple_return_terminators.rs:4:5: 8:6
+-         goto -> bb3;                     // scope 0 at $DIR/multiple_return_terminators.rs:4:5: 8:6
++         return;                          // scope 0 at $DIR/multiple_return_terminators.rs:4:5: 8:6
       }
   
       bb2: {
           _0 = const ();                   // scope 0 at $DIR/multiple_return_terminators.rs:4:10: 6:6
-          goto -> bb3;                     // scope 0 at $DIR/multiple_return_terminators.rs:4:5: 8:6
-      }
-  
-      bb3: {
-          StorageDead(_2);                 // scope 0 at $DIR/multiple_return_terminators.rs:9:1: 9:2
-          return;                          // scope 0 at $DIR/multiple_return_terminators.rs:9:2: 9:2
+-         goto -> bb3;                     // scope 0 at $DIR/multiple_return_terminators.rs:4:5: 8:6
+-     }
+- 
+-     bb3: {
+-         return;                          // scope 0 at $DIR/multiple_return_terminators.rs:9:2: 9:2
++         return;                          // scope 0 at $DIR/multiple_return_terminators.rs:4:5: 8:6
       }
   }
   
