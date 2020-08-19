@@ -16,12 +16,14 @@ pub fn exhaustive_match(e: E) -> u8 {
 // CHECK-NEXT: ]
 // CHECK: [[B]]:
 // CHECK-NEXT: store i8 1, i8* %1, align 1
-// CHECK-NEXT: br label %[[EXIT:[a-zA-Z0-9_]+]]
+// CHECK-NEXT: %[[RESB:[0-9]+]] = load i8, i8* %1, align 1
+// CHECK-NEXT: ret i8 %[[RESB]]
 // CHECK: [[OTHERWISE]]:
 // CHECK-NEXT: unreachable
 // CHECK: [[A]]:
 // CHECK-NEXT: store i8 0, i8* %1, align 1
-// CHECK-NEXT: br label %[[EXIT:[a-zA-Z0-9_]+]]
+// CHECK-NEXT: %[[RESA:[0-9]+]] = load i8, i8* %1, align 1
+// CHECK-NEXT: ret i8 %[[RESA]]
     match e {
         E::A => 0,
         E::B => 1,
