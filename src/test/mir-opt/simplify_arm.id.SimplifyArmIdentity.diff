@@ -19,7 +19,7 @@
   
       bb1: {
           discriminant(_0) = 0;            // scope 0 at $DIR/simplify-arm.rs:12:17: 12:21
-          return;                          // scope 0 at $DIR/simplify-arm.rs:10:5: 13:6
+          goto -> bb4;                     // scope 0 at $DIR/simplify-arm.rs:10:5: 13:6
       }
   
       bb2: {
@@ -36,7 +36,11 @@
 -         StorageDead(_4);                 // scope 1 at $DIR/simplify-arm.rs:11:26: 11:27
 -         StorageDead(_3);                 // scope 0 at $DIR/simplify-arm.rs:11:26: 11:27
 +         _0 = move _1;                    // scope 1 at $DIR/simplify-arm.rs:11:20: 11:27
-          return;                          // scope 0 at $DIR/simplify-arm.rs:10:5: 13:6
+          goto -> bb4;                     // scope 0 at $DIR/simplify-arm.rs:10:5: 13:6
+      }
+  
+      bb4: {
+          return;                          // scope 0 at $DIR/simplify-arm.rs:14:2: 14:2
       }
   }
   

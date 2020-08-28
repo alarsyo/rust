@@ -47,7 +47,7 @@
   
       bb3: {
           _0 = const ();                   // scope 0 at $DIR/simplify_try_if_let.rs:22:21: 22:24
-          return;                          // scope 0 at $DIR/simplify_try_if_let.rs:21:9: 32:10
+          goto -> bb9;                     // scope 0 at $DIR/simplify_try_if_let.rs:21:9: 32:10
       }
   
       bb4: {
@@ -92,7 +92,11 @@
       bb8: {
           StorageDead(_5);                 // scope 1 at $DIR/simplify_try_if_let.rs:31:13: 31:14
           StorageDead(_4);                 // scope 0 at $DIR/simplify_try_if_let.rs:31:13: 31:14
-          return;                          // scope 0 at $DIR/simplify_try_if_let.rs:21:9: 32:10
+          goto -> bb9;                     // scope 0 at $DIR/simplify_try_if_let.rs:21:9: 32:10
+      }
+  
+      bb9: {
+          return;                          // scope 0 at $DIR/simplify_try_if_let.rs:33:6: 33:6
       }
   }
   
